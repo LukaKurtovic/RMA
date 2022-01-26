@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ToDo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_show_map">ShowMapActivity</string>
+    <string name="title">Enter note title</string>
+    <string name="description">Enter note description</string>
+    <string name="mapButton">open map</string>
+    <string name="noteTitle">Note Title</string>
+</resources>
