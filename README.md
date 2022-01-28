@@ -1,1 +1,1 @@
-# Kotlin projektni zadatak
+# Kotlin projektni zadatak - To do aplikacija s google kartom
