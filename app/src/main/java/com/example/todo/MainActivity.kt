@@ -1,5 +1,6 @@
 package com.example.todo
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,11 +39,18 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteClickDeleteInt
     override fun onNoteClick(note: Note) {
         val intent = Intent(this@MainActivity, AddEditNoteActivity::class.java)
         intent.putExtra("noteType", "Edit")
-        intent.putExtra("title", note.noteTitle)
-        intent.putExtra("description", note.noteDescription)
         intent.putExtra("noteID", note.id)
         intent.putExtra("latitude", note.latitude)
         intent.putExtra("longitude", note.longitude)
+
+        val sharedPreferences = getSharedPreferences("sharedPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.apply{
+            putString("TITLE", note.noteTitle)
+            putString("DESCRIPTION", note.noteDescription)
+            putInt("ID", note.id)
+        }.apply()
+
         startActivity(intent)
 
     }
@@ -51,6 +59,4 @@ class MainActivity : AppCompatActivity(), NoteClickInterface, NoteClickDeleteInt
         viewModel.deleteNote(note)
         Toast.makeText(this, "Note deleted", Toast.LENGTH_SHORT).show()
     }
-
-
 }
